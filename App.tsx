@@ -14,8 +14,10 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import themeStyles from './src/utils/styles/styles';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -25,13 +27,15 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <SafeAreaView style={[backgroundStyle, {flex: 1}]}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <View style={[{flex: 1, backgroundColor: 'white'}]}></View>
-    </SafeAreaView>
+    <GestureHandlerRootView style={themeStyles.flex1}>
+      <SafeAreaView style={[backgroundStyle, themeStyles.flex1]}>
+        <StatusBar
+          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          backgroundColor={backgroundStyle.backgroundColor}
+        />
+        <View style={[{flex: 1, backgroundColor: 'white'}]}></View>
+      </SafeAreaView>
+    </GestureHandlerRootView>
   );
 }
 
